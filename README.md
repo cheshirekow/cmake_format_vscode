@@ -38,10 +38,8 @@ This extension contributes the following settings:
 
 ## Known Issues
 
-When used with cmake language support, it appears that one cannot "undo"
-after formatting. You can find known issues with `cmake-format` on [github][3].
+You can find known issues with `cmake-format` on [github][3].
 Feel free to file issues with the vscode extension there as well.
-
 
 ## Release Notes
 

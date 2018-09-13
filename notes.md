@@ -7,5 +7,9 @@
 * Open this directory in vscode, then press f5 to launch debugger
 * See https://code.visualstudio.com/docs/extensions/publish-extension
 * Build the package locally with
-* `vsce package --baseImagesUrl https://raw.githubusercontent.com/cheshirekow/cmake_format_vscode/work` so
+  * `vsce package --baseImagesUrl https://raw.githubusercontent.com/cheshirekow/cmake_format_vscode/work` so
   that images work.
+* Publish with
+  * `vsce package --baseImagesUrl https://raw.githubusercontent.com/cheshirekow/cmake_format_vscode/work`
+* In the above two cases, replace `<work>` with a branchname or leave it off
+  to use master.
