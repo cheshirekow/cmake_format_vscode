@@ -1,16 +1,7 @@
-# Notes
+# cmake-format
 
-* Add nodesource PPA
-* sudo apt-get install node-js node-typescript
-* Run `npm install -g vscode` (after global config for user)
-* Run `npm install` in the source tree to get all the dependencies.
-* Open this directory in vscode, then press f5 to launch debugger
+This extension provides cmake listfile formatting using [cmake-format][1]
 
-
-
-# cmake-format README
-
-This is the README for your extension "cmake-format". After writing up a brief description, we recommend including the following sections.
 
 ## Features
 
@@ -47,17 +38,9 @@ Users appreciate release notes as you update your extension.
 
 ### 1.0.0
 
-Initial release of ...
 
-### 1.0.1
 
-Fixed issue #.
-
-### 1.1.0
-
-Added features X, Y, and Z.
-
------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
 
 ## Working with Markdown
 
