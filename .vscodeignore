@@ -1,9 +1,13 @@
+.gitignore
 .vscode/**
 .vscode-test/**
-out/test/**
+images/*.xcf
+images/
+images/Selection_*.png
+notes.md
 out/**/*.map
+node_modules/**
+package-lock.json
 src/**
-.gitignore
 tsconfig.json
-vsc-extension-quickstart.md
 tslint.json
