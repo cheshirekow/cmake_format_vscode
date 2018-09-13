@@ -10,7 +10,7 @@ command for listfiles. The extension is quite limmited in scope to just this
 one feature. I may grow it in the future to provide more language support
 features for cmake.
 
-![Not Crap](images/small.gif)
+![Not Crap](images/small_demo.gif)
 
 Source for this extension is maintained with the source for `cmake-format` in
 [github][1].

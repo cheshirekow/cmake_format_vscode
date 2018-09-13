@@ -5,3 +5,4 @@
 * Run `npm install -g vscode` (after global config for user)
 * Run `npm install` in the source tree to get all the dependencies.
 * Open this directory in vscode, then press f5 to launch debugger
+* See https://code.visualstudio.com/docs/extensions/publish-extension

@@ -2,8 +2,9 @@
     "name": "cmake-format",
     "displayName": "cmake-format",
     "description": "Format listfiles so they don't look like crap",
-    "version": "0.0.1",
+    "version": "0.4.1",
     "publisher": "cheshirekow",
+    "icon": "images/cmake-format-logo.png",
     "engines": {
         "vscode": "^1.23.0"
     },
