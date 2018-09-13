@@ -1,21 +1,23 @@
 # cmake-format
 
-This extension provides cmake listfile formatting using [cmake-format][1]
-
+[cmake-format][1] can format your listfiles nicely so that they don't look like
+crap.
 
 ## Features
 
-Describe specific features of your extension including screenshots of your extension in action. Image paths are relative to this README file.
+The `cmake-format` extension for vscode provides a document format
+command for listfiles. The extension is quite limmited in scope to just this
+one feature. I may grow it in the future to provide more language support
+features for cmake.
 
-For example if there is an image subfolder under your extension project workspace:
 
 \!\[feature X\]\(images/feature-x.png\)
 
-> Tip: Many popular extensions utilize animations. This is an excellent way to show off your extension! We recommend short, focused animations that are easy to follow.
 
 ## Requirements
 
-If you have any requirements or dependencies, add a section describing those and how to install and configure them.
+In order for this extension to work you must have `cmake-format` installed.
+The recommended way to do that is through `pip`.
 
 ## Extension Settings
 
@@ -30,13 +32,16 @@ This extension contributes the following settings:
 
 ## Known Issues
 
-Calling out known issues can help limit users opening duplicate issues against your extension.
+Currently there are no known issues with the vscode extension. You can find
+known issues with `cmake-format` on [github][3]
+
 
 ## Release Notes
 
-Users appreciate release notes as you update your extension.
+### 0.4.1
 
-### 1.0.0
+Initial release. Note that the vscode extension release version matches the
+cmake-format release version on [pypi][2].
 
 
 
@@ -56,3 +61,8 @@ Users appreciate release notes as you update your extension.
 * [Markdown Syntax Reference](https://help.github.com/articles/markdown-basics/)
 
 **Enjoy!**
+
+
+[1]: https://github.com/cheshirekow/cmake_format
+[2]: https://pypi.org/project/cmake_format/
+[3]: https://github.com/cheshirekow/cmake_format/issues

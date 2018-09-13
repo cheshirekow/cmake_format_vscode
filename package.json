@@ -26,7 +26,41 @@
                     "cmake"
                 ]
             }
-        ]
+        ],
+        "configuration": {
+            "type": "object",
+            "title": "cmake-format configuration",
+            "properties": {
+                "cmakeFormat.cwd": {
+                    "type": ["string", "null"],
+                    "default": null,
+                    "description": "Working directory for cmake-format. Default will be the workspace root for the active document."
+                },
+                "cmakeFormat.env": {
+                    "type": [
+                        "object",
+                        "null"
+                    ],
+                    "default": null,
+                    "description": "Environment used when subprocessing cmake-format. Set PYTHONPATH or PATH here as needed."
+                },
+                "cmakeFormat.mergeEnv": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "Set to false to use the cmakeFormat.env environment verbatim, set to true to merge it with the existing environment."
+                },
+                "cmakeFormat.exePath": {
+                    "type": "string",
+                    "default": "cmake-format",
+                    "description": "Full path cmake-format entry point script or binary"
+                },
+                "cmakeFormat.args": {
+                    "type": "array[string]",
+                    "default": [],
+                    "description": "Additional arguments to pass to cmake-format. Specify, e.g. --config-file here."
+                }
+            }
+        }
     },
     "scripts": {
         "vscode:prepublish": "npm run compile",
