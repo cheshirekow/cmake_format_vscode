@@ -2,7 +2,6 @@
 .vscode/**
 .vscode-test/**
 images/*.xcf
-images/
 images/Selection_*.png
 notes.md
 out/**/*.map
