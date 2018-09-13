@@ -15,15 +15,11 @@ export function activate(context: vscode.ExtensionContext) {
     let disposable = vscode.languages.registerDocumentFormattingEditProvider(
         { scheme: 'file', language: 'cmake' }, {
             provideDocumentFormattingEdits(document: vscode.TextDocument): vscode.TextEdit[] {
-                console.log("Here 1");
                 const cp = require('child_process')
                 var replacementText = cp.execFileSync("cmake-format", ["-"], {
                     input: document.getText(),
                     encoding: 'utf-8'
                 });
-                console.log("Here 2");
-                console.log(replacementText);
-
                 var firstLine = document.lineAt(0);
                 var lastLine = document.lineAt(document.lineCount - 1);
                 var wholeRange = new vscode.Range(0,
