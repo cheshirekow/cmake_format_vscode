@@ -9,52 +9,32 @@ export function activate(context: vscode.ExtensionContext) {
 
     // Use the console to output diagnostic information (console.log) and errors (console.error)
     // This line of code will only be executed once when your extension is activated
-    console.log('Congratulations, your extension "cmake-format" is now active!');
-
-    // The command has been defined in the package.json file
-    // Now provide the implementation of the command with  registerCommand
-    // The commandId parameter must match the command field in package.json
-    let disposable = vscode.commands.registerCommand('extension.sayHello', () => {
-        // The code you place here will be executed every time your command is executed
-
-        // Display a message box to the user
-        vscode.window.showInformationMessage('Hello World!');
-    });
-
-    context.subscriptions.push(disposable);
-
-
-    // 👎 formatter implemented as separate command
-    vscode.commands.registerCommand('extension.format-foo', () => {
-        const { activeTextEditor } = vscode.window;
-
-        if (activeTextEditor && activeTextEditor.document.languageId === 'foo-lang') {
-            const { document } = activeTextEditor;
-            var firstLine = document.lineAt(0);
-            var lastLine = document.lineAt(document.lineCount - 1);
-            var wholeRange = new vscode.Range(0,
-                firstLine.range.start.character,
-                document.lineCount - 1,
-                lastLine.range.end.character);
-
-            const edit = new vscode.WorkspaceEdit();
-            edit.replace(document.uri, wholeRange, "Replacement text");
-            return vscode.workspace.applyEdit(edit)
-        }
-    });
+    console.log('"cmake-format" extension is now active!');
 
     // 👍 formatter implemented using API
-    vscode.languages.registerDocumentFormattingEditProvider('foo-lang', {
-        provideDocumentFormattingEdits(document: vscode.TextDocument): vscode.TextEdit[] {
-            var firstLine = document.lineAt(0);
-            var lastLine = document.lineAt(document.lineCount - 1);
-            var wholeRange = new vscode.Range(0,
-                firstLine.range.start.character,
-                document.lineCount - 1,
-                lastLine.range.end.character);
-            return [vscode.TextEdit.replace(wholeRange, "Replacement text")];
-        }
-    });
+    let disposable = vscode.languages.registerDocumentFormattingEditProvider(
+        { scheme: 'file', language: 'cmake' }, {
+            provideDocumentFormattingEdits(document: vscode.TextDocument): vscode.TextEdit[] {
+                console.log("Here 1");
+                const cp = require('child_process')
+                var replacementText = cp.execFileSync("cmake-format", ["-"], {
+                    input: document.getText(),
+                    encoding: 'utf-8'
+                });
+                console.log("Here 2");
+                console.log(replacementText);
+
+                var firstLine = document.lineAt(0);
+                var lastLine = document.lineAt(document.lineCount - 1);
+                var wholeRange = new vscode.Range(0,
+                    firstLine.range.start.character,
+                    document.lineCount - 1,
+                    lastLine.range.end.character);
+                return [vscode.TextEdit.replace(wholeRange, replacementText)];
+            }
+        });
+
+    context.subscriptions.push(disposable);
 }
 
 // this method is called when your extension is deactivated

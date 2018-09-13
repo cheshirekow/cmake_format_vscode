@@ -11,25 +11,20 @@
         "Other"
     ],
     "activationEvents": [
-        "onCommand:extension.sayHello"
+        "onLanguage:cmake"
     ],
     "main": "./out/extension",
     "contributes": {
         "languages": [
             {
-                "id": "foo-lang",
+                "id": "cmake",
                 "aliases": [
-                    "Foo"
+                    "cmake",
+                    "cmake-listfile"
                 ],
                 "extensions": [
-                    "foo"
+                    "cmake"
                 ]
-            }
-        ],
-        "commands": [
-            {
-                "command": "extension.sayHello",
-                "title": "Hello World"
             }
         ]
     },
