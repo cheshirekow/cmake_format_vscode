@@ -16,6 +16,8 @@ export function activate(context: vscode.ExtensionContext) {
     let disposable = vscode.languages.registerDocumentFormattingEditProvider(
         { scheme: 'file', language: 'cmake' }, {
             provideDocumentFormattingEdits(document: vscode.TextDocument): vscode.TextEdit[] {
+                var fs = require('fs')
+                var path = require('path')
                 var config = vscode.workspace.getConfiguration('cmakeFormat');
                 var exePath = config.get("exePath");
                 var args = config.get<string[]>("args", []).concat(["-"]);
@@ -25,15 +27,23 @@ export function activate(context: vscode.ExtensionContext) {
                 };
 
                 var cwd = config.get("cwd");
-                if (cwd === null) {
-                    cwd = vscode.workspace.getWorkspaceFolder(document.uri);
+                if (cwd == null) {
+                    var folder = vscode.workspace.getWorkspaceFolder(document.uri);
+                    if (folder != null) {
+                        cwd = folder.uri.fsPath;
+                        console.log("No cwd configured, using workspace path: " + cwd);
+                    }
                 }
-                if (cwd === null && document.uri.fsPath !== null) {
-                    cwd = require('path').dirname(document.uri.fsPath)
+                if (cwd == null && document.uri.fsPath != null) {
+                    cwd = path.dirname(document.uri.fsPath)
+                    console.log("No cwd configured, no workspace path, using: " + cwd);
                 }
-                if (cwd !== null) {
+                if (cwd != null && fs.statSync(cwd).isDirectory()) {
                     opts["cwd"] = cwd;
+                } else {
+                    console.log("Can't use cwd: " + cwd);
                 }
+
 
                 var env: any = {}
                 if (config.get("mergeEnv", true)) {
@@ -41,7 +51,7 @@ export function activate(context: vscode.ExtensionContext) {
                 }
                 var cenv: any = config.get("env", {});
                 if (cenv !== null) {
-                    var delim = require('path').delimeter;
+                    var delim = path.delimeter;
                     for (var [key, value] of Object.entries(cenv)) {
                         if (key.endsWith("PATH")) {
                             var items = cenv[key].split(delim);
